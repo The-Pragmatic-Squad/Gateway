@@ -10,20 +10,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MQConfig {
+public class RabbitMQConfig {
 
-    public static final String ACCOUNT_QUEUE = "account_queue";
-    public static final String ACCOUNT_EXCHANGE = "account_exchange";
-    public static final String ACCOUNT_ROUTING_KEY = "account_routing_key";
+    public static final String TRANSACTION_QUEUE = "transaction_queue";
+    public static final String TRANSACTION_EXCHANGE = "transaction_exchange";
+    public static final String TRANSACTION_ROUTING_KEY = "transaction_routing_key";
 
     @Bean
     public Queue queue() {
-        return new Queue(ACCOUNT_QUEUE);
+        return new Queue(TRANSACTION_QUEUE);
     }
 
     @Bean
     public TopicExchange exchange() {
-        return new TopicExchange(ACCOUNT_EXCHANGE);
+        return new TopicExchange(TRANSACTION_EXCHANGE);
     }
 
     @Bean
@@ -31,7 +31,7 @@ public class MQConfig {
         return BindingBuilder
                 .bind(queue)
                 .to(exchange)
-                .with(ACCOUNT_ROUTING_KEY);
+                .with(TRANSACTION_ROUTING_KEY);
     }
 
     @Bean
@@ -40,7 +40,7 @@ public class MQConfig {
     }
 
     @Bean
-    public AmqpTemplate Template(ConnectionFactory connectionFactory) {
+    public AmqpTemplate template(ConnectionFactory connectionFactory) {
         final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(messageConverter());
         return rabbitTemplate;

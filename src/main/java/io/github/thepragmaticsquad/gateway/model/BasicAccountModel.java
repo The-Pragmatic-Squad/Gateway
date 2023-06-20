@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class BasicAccountModel {
 
     @NotNull(message = "Balance is required")
     @DecimalMin(value = "50", inclusive = false, message = "Balance must be greater than 0")
-    private Double balance;
+    private BigDecimal balance;
 
     @NotNull(message = "Account type is required")
     private AccountType type;

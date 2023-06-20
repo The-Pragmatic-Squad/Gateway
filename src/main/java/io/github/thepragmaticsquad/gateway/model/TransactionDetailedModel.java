@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 @Data
@@ -34,13 +35,13 @@ public class TransactionDetailedModel {
     private TransactionStatus status;
 
     @NotNull(message = "Amount is required")
-    private Double amount;
+    private BigDecimal amount;
 
     @NotNull(message = "Balance before transaction is required")
-    private Double balanceBefore;
+    private BigDecimal balanceBefore;
 
     @NotNull(message = "Balance after transaction is required")
-    private Double balanceAfter;
+    private BigDecimal balanceAfter;
 
     @NotBlank(message = "Details are required")
     private String details;
