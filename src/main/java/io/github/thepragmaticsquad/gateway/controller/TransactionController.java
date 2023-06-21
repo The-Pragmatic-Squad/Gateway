@@ -1,6 +1,5 @@
 package io.github.thepragmaticsquad.gateway.controller;
 
-import io.github.thepragmaticsquad.gateway.enums.TransactionType;
 import io.github.thepragmaticsquad.gateway.model.SimpleTransactionModel;
 import io.github.thepragmaticsquad.gateway.service.TransactionPublisher;
 import org.springframework.web.bind.annotation.*;
